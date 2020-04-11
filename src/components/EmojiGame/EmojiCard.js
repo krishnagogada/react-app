@@ -1,6 +1,7 @@
 import React from 'react';
 import { SingleEmojiCard, EmojiImage, EmojiName } from './EmojiGameStyles.js';
 class EmojiCard extends React.Component {
+
     onEmojiClicks = () => {
         const { emoji } = this.props;
         const { onEmojiClicks } = this.props;

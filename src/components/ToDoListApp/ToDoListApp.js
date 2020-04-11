@@ -67,7 +67,8 @@ class ToDoListOfItems extends React.Component {
 
 //------------------------------------------> User Input ToDo <---------------------------------------
 
-class UserInput extends React.Component {
+class UserInputToDo extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -280,4 +281,4 @@ function ClearAll(props) {
 
 }
 
-export default withRouter(UserInput);
+export default withRouter(UserInputToDo);

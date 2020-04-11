@@ -1,6 +1,8 @@
 import React from 'react';
 import CarsList from './components/CarsList/CarListApp.js';
-import UserInput from './components/ToDoListApp/ToDoListApp.js';
+import UserInputToDo from './components/ToDoListApp/ToDoListApp.js';
+import ToDoApp from './components/MobXToDoApp/TodoApp/MobXToDoApp.js';
+import EventPageApp from './components/EventsPage/EventPageApp.js';
 import FormsComponents from './components/Forms/Forms.js';
 import { CountriesDashBoardApp } from './components/CountriesDashBoard/CountriesDashBoard.js';
 import CountryCard from './components/CountriesDashBoard/CreateCountryCard.js';
@@ -14,53 +16,70 @@ import GoBack from './components/CountriesDashBoard/CountriesDashBoardGoBack.js'
 import LightModeLoading from './light.svg';
 import DarkModeLoading from './dark.svg';
 import EmojiGame from './components/EmojiGame/EmojiGame.js';
+import CounterPage from './components/CounterPage';
+import { observer } from 'mobx-react';
+import themeStore from './stores/ThemeStore/index.js';
 import Home from './components/home.js';
+
+import { A } from './components/HandsOn/A.js';
 
 import './App.css';
 
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route
+  BrowserRouter as Router,
+  Switch,
+  Route
 }
 from "react-router-dom";
 
-class App extends React.Component {
-    static themeOption = {
-        light: {
-            id: "0",
-            backgroundcolor: "#fff",
-            color: 'black',
-            buttonsBackgroundcolor: '#fff',
-            loading: `${LightModeLoading}`
-        },
-        dark: {
-            id: "1",
-            backgroundcolor: 'rgb(32,45,55)',
-            buttonsBackgroundcolor: "#2b3945",
-            color: 'white',
-            loading: `${DarkModeLoading}`
-        }
-    }
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedTheme: 'Light Mode',
-        };
-        this.theme = App.themeOption.light;
-    }
-    onChangeTheme = (theme) => {
+@observer
 
-        this.setState({ selectedTheme: theme });
-        this.theme = theme === 'Light Mode' ? App.themeOption.light : App.themeOption.dark;
+class App extends React.Component {
+
+  static themeOption = {
+    light: {
+      id: "0",
+      backgroundcolor: "#fff",
+      color: 'black',
+      buttonsBackgroundcolor: '#fff',
+      loading: `${LightModeLoading}`
+    },
+    dark: {
+      id: "1",
+      backgroundcolor: 'rgb(32,45,55)',
+      buttonsBackgroundcolor: "#2b3945",
+      color: 'white',
+      loading: `${DarkModeLoading}`
     }
-    render() {
-        return (
-            <Router>
+  }
+
+  theme = App.themeOption.light;
+
+  getCurrentTheme = () => {
+    return themeStore.selectedTheme;
+  }
+
+  onChangeTheme = (theme) => {
+    themeStore.setCurrentTheme(theme);
+    this.theme = theme === 'Light Mode' ? App.themeOption.light : App.themeOption.dark;
+  }
+
+  render() {
+    return (
+      <Router>
       <div>
         <Switch>
+          <Route exact path="/counter-page">
+            <CounterPage/>
+          </Route>
           <Route path="/ToDoListApp">
             <ToDoListApp  />
+          </Route>
+          <Route path="/mobx-todo-app">
+            <ToDoApp  />
+          </Route>
+          <Route path="/events-app">
+            <EventPageApp  />
           </Route>
           <Route path="/CarsApp">
           <CarsApp />
@@ -71,12 +90,15 @@ class App extends React.Component {
           <Route path="/Countries">
             <div style={{backgroundColor:this.theme.backgroundcolor,color:this.theme.color}}>
               <GoBack theme={this.theme}/>
-              <Header onChangeTheme={this.onChangeTheme} selectedTheme={this.state.selectedTheme} theme={this.theme}/>
+              <Header onChangeTheme={this.onChangeTheme} selectedTheme={this.getCurrentTheme()} theme={this.theme}/>
               <CountriesDashBoardApp theme={this.theme}/>
             </div> 
           </Route>
           <Route path="/Emoji">
           <EmojiGame/>
+          </Route>
+          <Route path="/Hands-On">
+          <A/>
           </Route>
           <Route path="/Greeting">
             <Greetings />
@@ -95,7 +117,7 @@ class App extends React.Component {
           </Route>
           <Route path="/:vamsi">
           <div style={{backgroundColor:this.theme.backgroundcolor,color:this.theme.color}}>
-              <Header onChangeTheme={this.onChangeTheme} selectedTheme={this.state.selectedTheme} theme={this.theme}/>
+              <Header onChangeTheme={this.onChangeTheme} selectedTheme={this.getCurrentTheme()} theme={this.theme}/>
               <CountryCard theme={this.theme}/>
           </div>    
           </Route>
@@ -105,26 +127,26 @@ class App extends React.Component {
         </Switch>
       </div>
     </Router>
-        );
-    }
+    );
+  }
 }
 
 function CarsApp() {
-    return <div>
+  return <div>
             <h2>CarsApp</h2>
             <CarsList/>
         </div>;
 }
 
 function ToDoListApp() {
-    return <div>
+  return <div>
             <h2>ToDoListApp</h2>
-            <UserInput/>
+            <UserInputToDo/>
           </div>;
 }
 
 function Forms() {
-    return <div>
+  return <div>
             <h2>Forms Components</h2>
             <FormsComponents/>
           </div>;

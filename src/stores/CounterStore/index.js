@@ -1,17 +1,40 @@
 import { observable, action } from 'mobx'
 
 class CounterStore {
-   @observable count = 0
+   @observable count = '';
 
    @action.bound
-   incrementCounter() {
-      this.count = this.count + 1
+   increment() {
+      if (this.count === '' || this.count.toString().search(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$ /) != -1) {
+         this.count = 1
+      }
+      else {
+         this.count = Number(this.count) + 1
+      }
    }
-
    @action.bound
-   decrementCounter() {
-      this.count = this.count - 1
+   decrement() {
+      if (this.count === '' || this.count.toString().search(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$ /) != -1) {
+         this.count = -1
+      }
+      else {
+         this.count = Number(this.count) - 1
+      }
+   }
+   @action.bound
+   onChange(value) {
+      if (value.search(/^[-+.0-9eE]*$/) != -1) {
+         if (value === '') {
+            this.count = '';
+         }
+         else {
+            this.count = value;
+         }
+      }
+      else {
+         this.count = '';
+      }
    }
 }
-
-export default CounterStore
+export default CounterStore;
+///^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$)/

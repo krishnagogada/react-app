@@ -24,9 +24,9 @@ const EndGame = styled.div `${tw `flex flex-col justify-center items-center h-77
 const TotalGameEndScore = styled.div `${tw `text-4xl text-blue-900 font-bold  m-3`}${props=>({color:props.selectedTheme.color})}`;
 const WinOrLossDisplay = styled.div `${tw `text-3xl font-black m-3`}${props=>({color:props.color})}`;
 const PlayAgain = styled.button `${tw `text-2xl p-2 text-white rounded`}background-color:#667eea`;
-//-------------------------------->How To Play<--------------------
+//-------------------------------->How To Play<-------------------
 const InstructionFooter = styled.div `${tw `h-14vh pl-4 pt-1`}${props=>({backgroundColor:props.selectedTheme.headerAndFooterBackground,color:props.selectedTheme.color})}`;
 const InstructionHeading = styled.div `${tw `text-2xl font-bold `}`;
 const Instructions = styled.div `${tw `text-xl pl-4 pt-1 pb-4`}`;
-//--------------------------------->Export<-------------------------
+//--------------------------------->Export<-----------------------
 export { EmojiGameContainer, AllEmojiCards, Header, MediumDevicesHeader, SmallDeviceScoreAndTopScore, GameName, GameScoresAndThemeOption, SmallDeviceScore, SmallDeviceTopScore, MediumDeviceScore, MediumDeviceTopScore, ThemeOption, SingleEmojiCard, EmojiImage, EmojiName, EndGame, TotalGameEndScore, WinOrLossDisplay, PlayAgain, InstructionFooter, InstructionHeading, Instructions };
