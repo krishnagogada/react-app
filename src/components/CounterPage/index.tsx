@@ -5,11 +5,25 @@ import { CounterApp, CounterHeading, UserInputAndButtons, IncreamentButton, User
 import stores from '../../stores';
 const counterStore = stores.counterStore;
 
+<<<<<<< HEAD:src/components/CounterPage/index.js
 // @observer
 // class CounterPage extends Component {
 //   handleIncrement = () => {
 //     counterStore.incrementCounter()
 //   }
+=======
+type Props = {
+  initialCount: number
+}
+
+@observer
+class CounterPage extends Component<Props> {
+  functionCalling
+
+  handleIncrement = () => {
+    counterStore.incrementCounter()
+  }
+>>>>>>> 3f522dcf5439de93b0d9d93a0808ea90b16a003d:src/components/CounterPage/index.tsx
 
 //   handleDecrement = () => {
 //     if (counterStore.count !== 0) {
