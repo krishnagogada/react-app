@@ -1,9 +1,15 @@
 import React from 'react';
-import { EventsList, EachEvent, NameAndLocation, EditAndDeleteButtons } from './styledComponent.js';
+// import { div, div, div, div } from './styledComponent.js';
 import { observer } from 'mobx-react';
+import EventPageModel from '../../../stores/models/EventPageModel/EventPageModel';
+
+type eventProps={
+    eventPage:EventPageModel,
+    onDeleteEvent:Function
+}
 
 @observer
-class Event extends React.Component {
+class Event extends React.Component <eventProps>{
     state = {
         isEditEvent: false,
         eventName: this.props.eventPage.name,
@@ -12,10 +18,10 @@ class Event extends React.Component {
     onDeleteEvent = () => {
         this.props.onDeleteEvent(this.props.eventPage.id);
     }
-    onChangeEventName = (event) => {
+    onChangeEventName = (event:any) => {
         this.setState({ eventName: event.target.value });
     }
-    onChangeEventLocation = () => {
+    onChangeEventLocation = (event:any) => {
         this.setState({ eventLocation: event.target.value });
     }
     onUpdateEventDetails = () => {
@@ -27,26 +33,26 @@ class Event extends React.Component {
     }
     render() {
         const { eventPage } = this.props;
-        return (<EventsList key={eventPage.id}>
+        return (<div key={eventPage.id}>
                     { this.state.isEditEvent ? 
-                    <EachEvent>
-                        <NameAndLocation>
+                    <div>
+                        <div>
                             <input defaultValue={this.state.eventName} onKeyUp = {(event) => this.onChangeEventName(event)}/>
                             <input defaultValue={this.state.eventLocation} onKeyUp = {(event) => this.onChangeEventLocation(event)}/>
-                        </NameAndLocation>
+                        </div>
                         <button onClick={this.onUpdateEventDetails}>Update</button>
-                    </EachEvent> : 
-                    <EachEvent>
-                        <NameAndLocation>
+                    </div> : 
+                    <div>
+                        <div>
                             <div>{eventPage.name}</div>
                             <div>{eventPage.location}</div>
-                        </NameAndLocation>
-                        <EditAndDeleteButtons>
+                        </div>
+                        <div>
                             <button onClick={this.onEditButtonClick}>Edit</button>
                             <button onClick={this.onDeleteEvent}>Delete</button>
-                        </EditAndDeleteButtons>    
-                    </EachEvent> }
-                </EventsList>);
+                        </div>    
+                    </div> }
+                </div>);
     }
 }
 export default Event;

@@ -1,9 +1,14 @@
 import React from 'react';
-import ToDo from '.././Todo/Todo.js';
 import { observer } from 'mobx-react';
+import {ToDoStore} from '../../../stores/ToDoAppStore/TodoStore';
+import ToDo from '.././Todo/Todo';
+
+type TodoListProps={
+    todoStore:ToDoStore
+}
 
 @observer
-class ToDoList extends React.Component {
+class ToDoList extends React.Component<TodoListProps>{
     render() {
         return (
             <div>

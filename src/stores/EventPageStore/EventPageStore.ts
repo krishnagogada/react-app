@@ -1,19 +1,20 @@
-import React from 'react';
-import EventPageModel from '../models/EventPageModel/EventPageModel.js';
+// import React from 'react';
 import { observable, action, computed } from 'mobx';
+import EventPageModel from '../models/EventPageModel/EventPageModel';
 
-class EventStore {
-    @observable eventPages = [];
+class EventStore{
+    
+    @observable eventPages:Array<EventPageModel>=[];
 
     @action.bound
-    onAddTodo(name, location) {
+    onAddEvent(name:string, location:string) {
         let eventPageObject = new EventPageModel();
         eventPageObject.onUpdateEventDetails(name, location);
         this.eventPages.push(eventPageObject);
     }
 
     @action.bound
-    onDeleteEvent(objectId) {
+    onDeleteEvent(objectId:string) {
 
         let restOfEvents = this.eventPages.filter((eachObject) => {
             return eachObject.id != objectId;
@@ -27,4 +28,4 @@ class EventStore {
 
 }
 let eventStore = new EventStore;
-export default eventStore;
+export { eventStore as default, EventStore};

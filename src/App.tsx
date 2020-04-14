@@ -1,8 +1,10 @@
 import React from 'react';
+import { observer } from 'mobx-react';
+
 import CarsList from './components/CarsList/CarListApp.js';
 import UserInputToDo from './components/ToDoListApp/ToDoListApp.js';
-import ToDoApp from './components/MobXToDoApp/TodoApp/MobXToDoApp.js';
-import EventPageApp from './components/EventsPage/EventPageApp.js';
+import ToDoApp from './components/MobXToDoApp/TodoApp/MobXToDoApp';
+import EventPageApp from './components/EventsPage/EventPageApp';
 import FormsComponents from './components/Forms/Forms.js';
 import { CountriesDashBoardApp } from './components/CountriesDashBoard/CountriesDashBoard.js';
 import CountryCard from './components/CountriesDashBoard/CreateCountryCard.js';
@@ -17,11 +19,11 @@ import LightModeLoading from './light.svg';
 import DarkModeLoading from './dark.svg';
 import EmojiGame from './components/EmojiGame/EmojiGame.js';
 import CounterPage from './components/CounterPage';
-import { observer } from 'mobx-react';
-import themeStore from './stores/ThemeStore/index.js';
+
+import themeStore from './stores/ThemeStore/index';
 import Home from './components/home.js';
 
-import { A } from './components/HandsOn/A.js';
+//import { A } from './components/HandsOn/A';
 
 import './App.css';
 
@@ -97,9 +99,6 @@ class App extends React.Component {
           <Route path="/Emoji">
           <EmojiGame/>
           </Route>
-          <Route path="/Hands-On">
-          <A/>
-          </Route>
           <Route path="/Greeting">
             <Greetings />
           </Route>
@@ -152,3 +151,6 @@ function Forms() {
           </div>;
 }
 export default App;
+// <Route path="/Hands-On">
+//           <A/>
+//           </Route>

@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 
-import { CounterApp, CounterHeading, UserInputAndButtons, IncreamentButton, UserCounterInput, DecreamentButton } from './styledComponent.js'
+//import { div, div, div, div, div, div } from './styledComponent.js'
 import stores from '../../stores';
 const counterStore = stores.counterStore;
 
-<<<<<<< HEAD:src/components/CounterPage/index.js
+// type Props = {
+//   initialCount: number
+// }
+
+// @observer
+// class CounterPage extends Component<Props> {
+//   functionCalling
+
+//   handleIncrement = () => {
+//     counterStore.incrementCounter()
+//   }
 // @observer
 // class CounterPage extends Component {
 //   handleIncrement = () => {
 //     counterStore.incrementCounter()
 //   }
-=======
-type Props = {
-  initialCount: number
-}
-
-@observer
-class CounterPage extends Component<Props> {
-  functionCalling
-
-  handleIncrement = () => {
-    counterStore.incrementCounter()
-  }
->>>>>>> 3f522dcf5439de93b0d9d93a0808ea90b16a003d:src/components/CounterPage/index.tsx
 
 //   handleDecrement = () => {
 //     if (counterStore.count !== 0) {
@@ -56,14 +53,14 @@ class Counter extends Component {
     }
     render() {
         return (
-            <CounterApp>
-                <CounterHeading>Counter</CounterHeading>
-                <UserInputAndButtons>
-                    <IncreamentButton onClick={this.increment}>+</IncreamentButton>
-                    <UserCounterInput type='text' value={counterStore.count} onChange={this.onChange}/>
-                    <DecreamentButton onClick={this.decrement}>-</DecreamentButton>
-                </UserInputAndButtons>
-            </CounterApp>
+            <div>
+                <div>Counter</div>
+                <div>
+                    <div onClick={this.increment}>+</div>
+                    <input type='text' value={counterStore.count} onChange={this.onChange}/>
+                    <div onClick={this.decrement}>-</div>
+                </div>
+            </div>
         );
     }
 }

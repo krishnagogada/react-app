@@ -1,8 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import {ToDoStore} from '../../../stores/ToDoAppStore/TodoStore';
+
+type AddToDoProps={
+    todoStore:ToDoStore
+}
 
 @observer
-class AddToDo extends React.Component {
+class AddToDo extends React.Component<AddToDoProps> {
     state = {
         toDoTitle: ''
     }
@@ -23,7 +28,7 @@ class AddToDo extends React.Component {
     }
     render() {
         return (
-            <input type = 'text' placeHolder = 'What needs to be done?' onKeyUp = {(event) =>this.onChangeInput(event) } />
+            <input type = 'text' placeholder = 'What needs to be done?' onKeyUp = {(event) =>this.onChangeInput(event) } />
         );
     }
 }

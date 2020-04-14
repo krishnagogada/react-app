@@ -23,16 +23,12 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "tailwind.macro": "^1.0.0-alpha.10",
-<<<<<<< HEAD
-    "tailwindcss-gradients": "^3.0.0"
-=======
     "typescript": "3.8.3"
->>>>>>> 3f522dcf5439de93b0d9d93a0808ea90b16a003d
   },
   "scripts": {
     "build:css": "postcss src/index.css -o src/styles/tailwind.css",
     "watch:css": "postcss src/index.css -o src/styles/tailwind.css",
-    "start": "npm run watch:css & react-scripts start",
+    "start": "react-scripts start",
     "build": "npm run build:css react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
