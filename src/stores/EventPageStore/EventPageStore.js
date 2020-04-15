@@ -2,19 +2,20 @@
 import { observable, action, computed } from 'mobx';
 import EventPageModel from '../models/EventPageModel/EventPageModel';
 
-class EventStore{
-    
-    @observable eventPages:Array<EventPageModel>=[];
+class EventStore {
+
+    @observable eventPages = [];
 
     @action.bound
-    onAddEvent(name:string, location:string) {
+    onAddEvent(name, location) {
+
         let eventPageObject = new EventPageModel();
         eventPageObject.onUpdateEventDetails(name, location);
         this.eventPages.push(eventPageObject);
     }
 
     @action.bound
-    onDeleteEvent(objectId:string) {
+    onDeleteEvent(objectId) {
 
         let restOfEvents = this.eventPages.filter((eachObject) => {
             return eachObject.id != objectId;
@@ -22,10 +23,11 @@ class EventStore{
         this.eventPages = restOfEvents;
 
     }
+
     @computed get noOfEvents() {
         return this.eventPages.length;
     }
 
 }
 let eventStore = new EventStore;
-export { eventStore as default, EventStore};
+export { eventStore as default, EventStore };

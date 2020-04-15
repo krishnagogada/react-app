@@ -8,8 +8,8 @@ import ToDoFooter from '.././TodoFooter/TodoFooter';
 
 class ToDoApp extends React.Component {
     render() {
+        reaction(() => (todoStore.todos.filter((eachObject) => { return !eachObject.isCompleted }).length), (length) => { length === 0 ? setTimeout(() => { alert('congratulations') }) : undefined });
         return (
-
             <div>
             <AddToDo todoStore={todoStore}/>
             <ToDoList todoStore={todoStore}/>

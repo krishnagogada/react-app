@@ -19,6 +19,7 @@ import LightModeLoading from './light.svg';
 import DarkModeLoading from './dark.svg';
 import EmojiGame from './components/EmojiGame/EmojiGame.js';
 import CounterPage from './components/CounterPage';
+import GridMemoryGame from './components/GridGame/GridMemoryGame/index.js';
 
 import themeStore from './stores/ThemeStore/index';
 import Home from './components/home.js';
@@ -82,6 +83,9 @@ class App extends React.Component {
           </Route>
           <Route path="/events-app">
             <EventPageApp  />
+          </Route>
+          <Route path="/grid-game">
+            <GridMemoryGame  />
           </Route>
           <Route path="/CarsApp">
           <CarsApp />

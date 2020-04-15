@@ -3,19 +3,19 @@ import { observable, action, computed } from 'mobx';
 import TodoModel from '../models/ToDoModel/TodoModel';
 
 class ToDoStore {
-    @observable todos:Array<TodoModel> = [];
-    @observable selectedFilter:String = 'All';
+    @observable todos = [];
+    @observable selectedFilter = 'All';
 
     @action.bound
-    onAddTodo(todoTitle:String) {
-        
+    onAddTodo(todoTitle) {
+
         let ToDoObject = new TodoModel();
         ToDoObject.onUpdateToDoTitle(todoTitle);
         this.todos.push(ToDoObject);
-        
+
     }
     @action.bound
-    onRemoveTodo(objectId:String) {
+    onRemoveTodo(objectId) {
 
         let filteredTodos = this.todos.filter((eachObject) => {
             return eachObject.id != objectId;
@@ -24,7 +24,7 @@ class ToDoStore {
 
     }
     @action.bound
-    onChangeSelectedFilter(selectedFilter:String) {
+    onChangeSelectedFilter(selectedFilter) {
         this.selectedFilter = selectedFilter;
     }
 
@@ -50,7 +50,7 @@ class ToDoStore {
     }
     @computed get filteredTodos() {
 
-        let filteredTodos:Array<TodoModel>=[];
+        let filteredTodos = [];
         switch (this.selectedFilter) {
 
             case 'All':
@@ -71,4 +71,4 @@ class ToDoStore {
     }
 }
 let todoStore = new ToDoStore;
-export { todoStore as default, ToDoStore};
+export { todoStore as default, ToDoStore };

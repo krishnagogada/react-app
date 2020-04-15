@@ -3,13 +3,13 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import EventPageModel from '../../../stores/models/EventPageModel/EventPageModel';
 
-type eventProps={
-    eventPage:EventPageModel,
-    onDeleteEvent:Function
+type eventProps = {
+    eventPage: EventPageModel,
+    onDeleteEvent: Function
 }
 
 @observer
-class Event extends React.Component <eventProps>{
+class Event extends React.Component {
     state = {
         isEditEvent: false,
         eventName: this.props.eventPage.name,
@@ -18,10 +18,10 @@ class Event extends React.Component <eventProps>{
     onDeleteEvent = () => {
         this.props.onDeleteEvent(this.props.eventPage.id);
     }
-    onChangeEventName = (event:any) => {
+    onChangeEventName = (event: any) => {
         this.setState({ eventName: event.target.value });
     }
-    onChangeEventLocation = (event:any) => {
+    onChangeEventLocation = (event: any) => {
         this.setState({ eventLocation: event.target.value });
     }
     onUpdateEventDetails = () => {
@@ -33,6 +33,7 @@ class Event extends React.Component <eventProps>{
     }
     render() {
         const { eventPage } = this.props;
+        console.log(eventPage)
         return (<div key={eventPage.id}>
                     { this.state.isEditEvent ? 
                     <div>

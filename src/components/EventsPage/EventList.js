@@ -1,14 +1,14 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import Event from './Event/Event';
-import {EventStore} from '../../stores/EventPageStore/EventPageStore';
+import { EventStore } from '../../stores/EventPageStore/EventPageStore';
 
-type eventProps={
-    eventStore:EventStore
+type eventProps = {
+    eventStore: EventStore
 }
 
 @observer
-class EventList extends React.Component <eventProps>{
+class EventList extends React.Component {
     render() {
         const { eventStore } = this.props;
         return (

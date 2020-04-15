@@ -1,10 +1,9 @@
 // import React from 'react';
-import { observable} from 'mobx';
+import { observable } from 'mobx';
 class ToDoModel {
-    
-    id:String;
-    @observable title:String;
-    @observable isCompleted:Boolean;
+
+    @observable title;
+    @observable isCompleted;
 
     constructor() {
         this.id = Math.random().toString();
@@ -14,7 +13,7 @@ class ToDoModel {
     onCompleteToDo = () => {
         this.isCompleted = !this.isCompleted;
     }
-    onUpdateToDoTitle = (title:String) => {
+    onUpdateToDoTitle = (title) => {
         this.title = title;
     }
 }

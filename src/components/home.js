@@ -29,6 +29,9 @@ export default function Home() {
               <Link to="/Emoji">Emoji Game</Link>
             </div>
             <div>
+              <Link to="/grid-game">Grid Game</Link>
+            </div>
+            <div>
               <Link to="/Hands-On">Hands On</Link>
             </div>
         </div>);

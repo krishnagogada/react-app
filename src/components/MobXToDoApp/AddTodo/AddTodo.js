@@ -1,13 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import {ToDoStore} from '../../../stores/ToDoAppStore/TodoStore';
+import { ToDoStore } from '../../../stores/ToDoAppStore/TodoStore';
 
-type AddToDoProps={
-    todoStore:ToDoStore
+type AddToDoProps = {
+    todoStore: ToDoStore
 }
 
 @observer
-class AddToDo extends React.Component<AddToDoProps> {
+class AddToDo extends React.Component {
     state = {
         toDoTitle: ''
     }

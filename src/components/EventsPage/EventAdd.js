@@ -1,13 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import {EventStore} from '../../stores/EventPageStore/EventPageStore';
+import { EventStore } from '../../stores/EventPageStore/EventPageStore';
 
-type AddEventProps={
-    eventStore:EventStore;
+type AddEventProps = {
+    eventStore: EventStore;
 }
 
 @observer
-class AddEvent extends React.Component<AddEventProps> {
+class AddEvent extends React.Component {
 
     state = {
         eventName: '',
@@ -18,11 +18,11 @@ class AddEvent extends React.Component<AddEventProps> {
         this.props.eventStore.onAddEvent(this.state.eventName, this.state.eventLocation);
     }
 
-    onChangeEventName = (event:any) => {
+    onChangeEventName = (event) => {
         this.setState({ eventName: event.target.value });
     }
 
-    onChangeEventLocation = (event:any) => {
+    onChangeEventLocation = (event) => {
         this.setState({ eventLocation: event.target.value });
     }
     render() {
