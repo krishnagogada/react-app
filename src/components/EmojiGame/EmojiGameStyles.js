@@ -21,7 +21,7 @@ const EmojiImage = styled.img `${tw `w-4/5`}`;
 const EmojiName = styled.div `${tw `text-base`}`;
 //-------------------------------->Win or Loss<-------------------
 const EndGame = styled.div `${tw `flex flex-col justify-center items-center h-77vh`}${props=>({backgroundColor:props.selectedTheme.backgroundcolor})}`;
-const TotalGameEndScore = styled.div `${tw `text-4xl text-blue-900 font-bold  m-3`}${props=>({color:props.selectedTheme.color})}`;
+const TotalGameEndScore = styled.div `${tw `text-4xl text-blue-900 font-bold m-3`}${props=>({color:props.selectedTheme.color})}`;
 const WinOrLossDisplay = styled.div `${tw `text-3xl font-black m-3`}${props=>({color:props.color})}`;
 const PlayAgain = styled.button `${tw `text-2xl p-2 text-white rounded`}background-color:#667eea`;
 //-------------------------------->How To Play<-------------------

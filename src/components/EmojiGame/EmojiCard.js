@@ -1,5 +1,6 @@
 import React from 'react';
 import { SingleEmojiCard, EmojiImage, EmojiName } from './EmojiGameStyles.js';
+
 class EmojiCard extends React.Component {
 
     onEmojiClicks = () => {

@@ -10,6 +10,7 @@ class ToDoStore {
     onAddTodo(todoTitle) {
 
         let ToDoObject = new TodoModel();
+        console.log(ToDoObject)
         ToDoObject.onUpdateToDoTitle(todoTitle);
         this.todos.push(ToDoObject);
 

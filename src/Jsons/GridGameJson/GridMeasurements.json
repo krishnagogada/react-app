@@ -1,0 +1,49 @@
+[{
+        "gridSize": 3,
+        "hiddenCellCount": 3,
+        "gridWidth": 300,
+        "gridCellWidth": 92
+    },
+    {
+        "gridSize": 4,
+        "hiddenCellCount": 4,
+        "gridWidth": 300,
+        "gridCellWidth": 67
+    },
+    {
+        "gridSize": 5,
+        "hiddenCellCount": 5,
+        "gridWidth": 350,
+        "gridCellWidth": 62
+    },
+    {
+        "gridSize": 6,
+        "hiddenCellCount": 6,
+        "gridWidth": 350,
+        "gridCellWidth": 50.3333333333
+    },
+    {
+        "gridSize": 7,
+        "hiddenCellCount": 7,
+        "gridWidth": 400,
+        "gridCellWidth": 49.1428571428
+    },
+    {
+        "gridSize": 8,
+        "hiddenCellCount": 8,
+        "gridWidth": 400,
+        "gridCellWidth": 42
+    },
+    {
+        "gridSize": 9,
+        "hiddenCellCount": 9,
+        "gridWidth": 450,
+        "gridCellWidth": 42
+    },
+    {
+        "gridSize": 10,
+        "hiddenCellCount": 10,
+        "gridWidth": 450,
+        "gridCellWidth": 37
+    }
+]
