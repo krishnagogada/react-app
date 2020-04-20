@@ -5,16 +5,16 @@ import TodoModel from '../models/ToDoModel/TodoModel';
 class ToDoStore {
     @observable todos = [];
     @observable selectedFilter = 'All';
+    @observable notFound = false;
 
     @action.bound
-    onAddTodo(todoTitle) {
+    onAddTodo(id, todoTitle, isCompleted) {
 
-        let ToDoObject = new TodoModel();
-        console.log(ToDoObject)
-        ToDoObject.onUpdateToDoTitle(todoTitle);
+        let ToDoObject = new TodoModel(id, todoTitle, isCompleted);
         this.todos.push(ToDoObject);
-
+        this.notFound = false;
     }
+
     @action.bound
     onRemoveTodo(objectId) {
 
@@ -22,6 +22,10 @@ class ToDoStore {
             return eachObject.id != objectId;
         });
         this.todos = filteredTodos;
+
+        if (this.todos.length === 0) {
+            this.notFound = false;
+        }
 
     }
     @action.bound
@@ -35,6 +39,10 @@ class ToDoStore {
             return (!eachToDoObject.isCompleted);
         });
         this.todos = listOfObjects;
+
+        if (this.todos.length === 0) {
+            this.notFound = false;
+        }
     }
 
     @computed get activeTodosCount() {

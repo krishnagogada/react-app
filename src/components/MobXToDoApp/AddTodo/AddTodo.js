@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { ToDoStore } from '../../../stores/ToDoAppStore/TodoStore';
+import AddUserTodo from './styledComponent.js';
 
 type AddToDoProps = {
     todoStore: ToDoStore
@@ -13,7 +14,8 @@ class AddToDo extends React.Component {
     }
 
     onAddTodo = () => {
-        this.props.todoStore.onAddTodo(this.state.toDoTitle);
+        let id = Math.random();
+        this.props.todoStore.onAddTodo(id, this.state.toDoTitle, false);
     }
 
     onChangeInput = (event) => {
@@ -28,7 +30,7 @@ class AddToDo extends React.Component {
     }
     render() {
         return (
-            <input type = 'text' placeholder = 'What needs to be done?' onKeyUp = {(event) =>this.onChangeInput(event) } />
+            <AddUserTodo type = 'text' placeholder = 'What needs to be done?' onKeyUp = {(event) =>this.onChangeInput(event) } />
         );
     }
 }

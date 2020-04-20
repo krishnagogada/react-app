@@ -5,10 +5,10 @@ class ToDoModel {
     @observable title;
     @observable isCompleted;
 
-    constructor() {
-        this.id = Math.random().toString();
-        this.title = '';
-        this.isCompleted = false;
+    constructor(id, title, isCompleted) {
+        this.id = id
+        this.title = title;
+        this.isCompleted = isCompleted;
     }
     onCompleteToDo = () => {
         this.isCompleted = !this.isCompleted;

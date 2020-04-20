@@ -12,6 +12,7 @@ class GameField extends React.Component {
     render() {
 
         const { cells, onCellClick, level, cellWidth, width, selectedTheme } = this.props;
+        // alert(cellWidth);
 
         return (
             <Grid width={width}>

@@ -16,7 +16,9 @@ class ToDoFooter extends React.Component {
         this.props.todoStore.onClearCompleted();
     }
     render() {
-        return <div className='footer'>
+
+        const { todoStore } = this.props;
+        return <div>{ todoStore.todos.length > 0 ? <div className='footer'>
                         <div className="number-of-items">{this.props.todoStore.activeTodosCount}</div>
                         <div className="all-types-filters">
                             <button value='All' onClick = {this.onChangeSelectedFilter}>All</button>
@@ -24,7 +26,8 @@ class ToDoFooter extends React.Component {
                             <button value='Completed' onClick = {this.onChangeSelectedFilter}>Completed</button>
                         </div>
                         <button className="all-clear" onClick = {this.onClearCompleted}>Clear Completed</button>
-                    </div>
+                    </div> : null }
+                </div>
     }
 }
 export default ToDoFooter;

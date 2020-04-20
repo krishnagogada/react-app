@@ -24,12 +24,10 @@ class GridMemoryGame extends React.Component {
 
     }
     render() {
-        let cellWidth = (gridMeasurements[gridStore.level].gridWidth / gridMeasurements[gridStore.level].gridSize) - 8;
-        console.log(gridMeasurements[gridStore.level].gridWidth, cellWidth, gridStore.level)
+        let cellWidth = Math.floor(gridMeasurements[gridStore.level].gridWidth / gridMeasurements[gridStore.level].gridSize) - 8;
         return (
             <WholeGameContainer selectedTheme={gridTheme.selectedTheme}>
                 <Header selectedTheme={gridTheme.selectedTheme} topLevel={gridStore.topLevel} level={gridStore.level} onChangeSelectedTheme={gridTheme.onChangeSelectedTheme} width={gridMeasurements[gridStore.level].gridWidth}/>
-                {console.log("memory")}
                 {gridStore.isGameCompleted?<GameResult selectedTheme={gridTheme.selectedTheme} level={gridStore.level} timerId={gridStore.timerId} onPlayAgainClick={gridStore.onPlayAgainClick}/>:
                 <GameField cells={gridStore.currentLevelGridCells} level={gridStore.level} onCellClick={gridStore.onCellClick} width={gridMeasurements[gridStore.level].gridWidth} cellWidth={cellWidth} selectedTheme={gridTheme.selectedTheme}/>}
             </WholeGameContainer>
