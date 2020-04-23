@@ -1,9 +1,11 @@
 import React from 'react';
-import { observer } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 
+import stores from './stores';
 import CarsList from './components/CarsList/CarListApp.js';
 import UserInputToDo from './components/ToDoListApp/ToDoListApp.js';
 import ToDoApp from './components/MobXToDoApp/TodoApp/MobXToDoApp';
+import ToDoAppWithService from './components/TodoAppWithLoadingWrapper/TodoApp/index.js';
 import EventPageApp from './components/EventsPage/EventPageApp';
 import FormsComponents from './components/Forms/Forms.js';
 import { CountriesDashBoardApp } from './components/CountriesDashBoard/CountriesDashBoard.js';
@@ -20,11 +22,9 @@ import DarkModeLoading from './dark.svg';
 import EmojiGame from './components/EmojiGame/EmojiGame.js';
 import CounterPage from './components/CounterPage';
 import GridMemoryGame from './components/GridGame/GridMemoryGame/index.js';
-
+import UserPage from './components/UserPage/index.js';
 import themeStore from './stores/ThemeStore/index';
 import Home from './components/home.js';
-
-//import { A } from './components/HandsOn/A';
 
 import './App.css';
 
@@ -69,6 +69,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <Provider {...stores}>
       <Router>
       <div>
         <Switch>
@@ -93,6 +94,8 @@ class App extends React.Component {
           <Route path="/Forms">
             <Forms />
           </Route>
+          <Route path="/loading-errors" component={UserPage}/>
+          <Route path="/todo-with-services" component={ToDoAppWithService}/>
           <Route path="/Countries">
             <div style={{backgroundColor:this.theme.backgroundcolor,color:this.theme.color}}>
               <GoBack theme={this.theme}/>
@@ -130,6 +133,7 @@ class App extends React.Component {
         </Switch>
       </div>
     </Router>
+    </Provider>
     );
   }
 }

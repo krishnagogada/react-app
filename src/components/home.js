@@ -34,5 +34,11 @@ export default function Home() {
             <div>
               <Link to="/Hands-On">Hands On</Link>
             </div>
+            <div>
+              <Link to="/loading-errors">TryOuts On Loading And Errors</Link>
+            </div>
+            <div>
+              <Link to="/todo-with-services">Todo App With Service</Link>
+            </div>
         </div>);
 }
