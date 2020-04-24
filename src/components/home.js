@@ -1,8 +1,46 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-export default function Home() {
-  return (
-    <div>
+import { Link, Redirect } from 'react-router-dom';
+import { observer } from 'mobx-react';
+import { observable } from 'mobx';
+import { Login, UserName, Password, LoginButton } from './styledComponent.js';
+
+@observer
+export default class Home extends React.Component {
+
+  @observable isLogged = true
+  @observable userName = '';
+  @observable password = '';
+
+  onChangeUserName = (event) => {
+    this.userName = event.target.value;
+  }
+  onChangepassword = (event) => {
+    this.password = event.target.value;
+  }
+  onLoginClick = () => {
+
+    if (this.userName === "qwer") {
+      this.isLogged = false;
+    }
+
+  }
+
+  // gotoGridScreenIfLoggedIn = () => {
+
+  //   return (
+  //     <Redirect to = { {pathname: '/login-page' }} />);
+  // }
+
+  render() {
+    if (this.isLogged) {
+      return <Login>
+                <UserName type='text' defaultValue={this.userName} onChange={this.onChangeUserName}/>
+                <Password type='password' defaultValue={this.password} onChangepassword={this.onChangepassword}/>
+                <LoginButton onClick={this.onLoginClick}>Login</LoginButton>
+            </Login>;
+    }
+    return (
+      <div>
             <h1>Projects</h1>
             <div>
               <Link to="/CarsApp">CarsApp</Link>
@@ -35,10 +73,12 @@ export default function Home() {
               <Link to="/Hands-On">Hands On</Link>
             </div>
             <div>
-              <Link to="/loading-errors">TryOuts On Loading And Errors</Link>
+              <Link to="/loading-errors">TryOuts On LoadingAnd Errors</Link>
             </div>
             <div>
               <Link to="/todo-with-services">Todo App With Service</Link>
             </div>
         </div>);
+  }
+
 }

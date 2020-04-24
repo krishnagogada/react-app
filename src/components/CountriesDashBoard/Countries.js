@@ -6,8 +6,10 @@ import { Country, CountryShortDetails } from './CountryDashBoardStyles.js';
 class Countries extends React.Component {
 
     selectedCountry = () => {
+
         let { history } = this.props;
         history.push({ pathname: './CreateCountryCard.js', selectedCountry: this.props.country.name });
+
     }
     render() {
         return <Country onClick={this.selectedCountry} theme={this.props.theme}>

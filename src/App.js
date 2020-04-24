@@ -23,6 +23,7 @@ import EmojiGame from './components/EmojiGame/EmojiGame.js';
 import CounterPage from './components/CounterPage';
 import GridMemoryGame from './components/GridGame/GridMemoryGame/index.js';
 import UserPage from './components/UserPage/index.js';
+import LoginPage from './components/LoginPage/index.js';
 import themeStore from './stores/ThemeStore/index';
 import Home from './components/home.js';
 
@@ -68,6 +69,7 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <Provider {...stores}>
       <Router>
@@ -95,6 +97,7 @@ class App extends React.Component {
             <Forms />
           </Route>
           <Route path="/loading-errors" component={UserPage}/>
+          <Route path="/login-page" component={LoginPage}/>
           <Route path="/todo-with-services" component={ToDoAppWithService}/>
           <Route path="/Countries">
             <div style={{backgroundColor:this.theme.backgroundcolor,color:this.theme.color}}>
@@ -128,7 +131,7 @@ class App extends React.Component {
           </div>    
           </Route>
           <Route path="/">
-            <Home />
+              <Home/>
           </Route>
         </Switch>
       </div>
