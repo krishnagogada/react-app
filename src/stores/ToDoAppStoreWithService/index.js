@@ -2,7 +2,6 @@ import { observable, action, computed } from 'mobx';
 import { API_INITIAL, API_FETCHING, API_SUCCESS, API_FAILED } from "@ib/api-constants";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import TodoModel from '../models/ToDoModel/TodoModel';
-import {observer} from 'mobx-react'
 
 class ToDoStoreWithService {
 

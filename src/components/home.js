@@ -32,13 +32,13 @@ export default class Home extends React.Component {
   // }
 
   render() {
-    if (this.isLogged) {
-      return <Login>
-                <UserName type='text' defaultValue={this.userName} onChange={this.onChangeUserName}/>
-                <Password type='password' defaultValue={this.password} onChangepassword={this.onChangepassword}/>
-                <LoginButton onClick={this.onLoginClick}>Login</LoginButton>
-            </Login>;
-    }
+    // if (this.isLogged) {
+    //   return <Login>
+    //             <UserName type='text' defaultValue={this.userName} onChange={this.onChangeUserName}/>
+    //             <Password type='password' defaultValue={this.password} onChangepassword={this.onChangepassword}/>
+    //             <LoginButton onClick={this.onLoginClick}>Login</LoginButton>
+    //         </Login>;
+    // }
     return (
       <div>
             <h1>Projects</h1>
@@ -77,6 +77,9 @@ export default class Home extends React.Component {
             </div>
             <div>
               <Link to="/todo-with-services">Todo App With Service</Link>
+            </div>
+            <div>
+              <Link to="/ecommerce-store/sign-in/">E CommerceStore</Link>
             </div>
         </div>);
   }

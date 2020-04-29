@@ -1,6 +1,8 @@
 import React from 'react';
 import { observer, Provider } from 'mobx-react';
 
+import authStore from './Common/stores/index.js';
+
 import stores from './stores';
 import CarsList from './components/CarsList/CarListApp.js';
 import UserInputToDo from './components/ToDoListApp/ToDoListApp.js';
@@ -26,11 +28,13 @@ import UserPage from './components/UserPage/index.js';
 import LoginPage from './components/LoginPage/index.js';
 import themeStore from './stores/ThemeStore/index';
 import Home from './components/home.js';
+import { authenticationRoutes } from './E_CommerceStore/Authentication/routes/index.js';
+import { ProductPageRoutes } from './E_CommerceStore/Products/routes/index.js';
 
 import './App.css';
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 }
@@ -69,9 +73,8 @@ class App extends React.Component {
   }
 
   render() {
-
     return (
-      <Provider {...stores}>
+      <Provider {...stores} {...authStore}>
       <Router>
       <div>
         <Switch>
@@ -98,6 +101,8 @@ class App extends React.Component {
           </Route>
           <Route path="/loading-errors" component={UserPage}/>
           <Route path="/login-page" component={LoginPage}/>
+          {authenticationRoutes}
+          { ProductPageRoutes }
           <Route path="/todo-with-services" component={ToDoAppWithService}/>
           <Route path="/Countries">
             <div style={{backgroundColor:this.theme.backgroundcolor,color:this.theme.color}}>
@@ -162,6 +167,3 @@ function Forms() {
           </div>;
 }
 export default App;
-// <Route path="/Hands-On">
-//           <A/>
-//           </Route>
