@@ -65,14 +65,9 @@
     "@testing-library/jest-dom": "5.5.0",
     "@testing-library/react": "10.0.3",
     "babel-eslint": "10.0.3",
-<<<<<<< HEAD
-    "customize-cra": "^0.9.1",
-    "react-app-rewired": "^2.1.5",
-=======
     "customize-cra": "0.9.1",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-app-rewired": "2.1.5",
->>>>>>> 5ebd41a0005d5e2fc218272893cdba8ba9408160
     "tailwindcss": "^1.2.0"
   }
 }
