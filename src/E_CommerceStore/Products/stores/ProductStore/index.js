@@ -1,6 +1,7 @@
-import { observable, action, computed } from 'mobx';
 import { API_INITIAL, API_FETCHING, API_SUCCESS, API_FAILED } from "@ib/api-constants";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
+import { observable, action, computed } from 'mobx';
+
 import ProductModel from '../models/ProductModel/index.js';
 
 class ProductStore {
@@ -11,6 +12,7 @@ class ProductStore {
     @observable ProductListAPIService;
     @observable sizeFilter = [];
     @observable sortBy = 'select';
+    @observable searchText = '';
 
     constructor(productsApiService) {
 
@@ -59,6 +61,11 @@ class ProductStore {
     }
 
     @action.bound
+    onChangeSearchText(text) {
+        this.searchText = text.toLowerCase();
+    }
+
+    @action.bound
     onSelectSize(selectedSize) {
 
         const indexOfSelectedSize = this.sizeFilter.indexOf(selectedSize);
@@ -73,26 +80,38 @@ class ProductStore {
 
     @computed get products() {
 
-        let filteredProducts = [];
+        let filteredProducts = this.productList;
 
-        if (this.sizeFilter.length !== 0) {
+        //------------------------------------->Filtered By Search Bar<-------------------------------
 
-            this.sizeFilter.map((eachSize) => {
+        if (this.searchText.length !== 0) {
 
-                const filteredProductsBySizeFilter = this.productList.filter((eachProduct) => {
-                    return eachProduct.availableSizes.indexOf(eachSize) !== -1;
-                });
-
-                filteredProducts = [...filteredProducts, ...filteredProductsBySizeFilter];
-                filteredProducts = [...new Set(filteredProducts)];
-
+            filteredProducts = this.productList.filter((eachProduct) => {
+                return (eachProduct.title.toLowerCase().search(this.searchText) !== -1);
             });
 
         }
-        else {
 
-            filteredProducts = this.productList;
+        //-------------------------------------->Filtered By Sizes<-----------------------------------
+
+        if (this.sizeFilter.length !== 0) {
+
+            let filteredProductsBySizeFilter = [];
+
+            this.sizeFilter.map((eachSize) => {
+
+                const filteredProductsOfSize = filteredProducts.filter((eachProduct) => {
+                    return eachProduct.availableSizes.indexOf(eachSize) !== -1;
+                });
+
+                filteredProductsBySizeFilter = [...filteredProductsBySizeFilter, ...filteredProductsOfSize];
+                filteredProductsBySizeFilter = [...new Set(filteredProductsBySizeFilter)];
+
+            });
+            filteredProducts = filteredProductsBySizeFilter;
         }
+
+        //--------------------------------------->Sorting<----------------------------------------------
 
         if (this.sortBy === 'ASCENDING') {
 

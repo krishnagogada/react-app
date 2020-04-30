@@ -1,11 +1,10 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import Product from '../Product/index.js';
 import Products from './styledComponent.js';
 import LoadingWrapperWithFailure from '../../../../Common/LoadingWrapper/LoadingWrapperWithFailure/index.js';
 import NoDataView from '../../../../Common/LoadingWrapper/NoDataView/index.js';
 
-@inject('productStore')
 @observer
 class ProductList extends React.Component {
 
@@ -14,8 +13,8 @@ class ProductList extends React.Component {
     }
 
     doNetworkCalls = () => {
-        const { productStore } = this.props;
-        productStore.getProductList();
+        const { getProductList } = this.props;
+        getProductList();
     }
 
     renderProductList = observer(() => {
@@ -27,7 +26,7 @@ class ProductList extends React.Component {
         else {
             return (
                 <Products>
-                    {sortedAndFilteredProducts.map((eachProduct)=>{ return <Product product={eachProduct}/>})}
+                    {sortedAndFilteredProducts.map((eachProduct)=>{ return <Product key={Math.random()} product={eachProduct}/>})}
                 </Products>);
         }
     })

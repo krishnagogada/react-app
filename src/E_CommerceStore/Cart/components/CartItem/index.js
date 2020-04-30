@@ -12,16 +12,19 @@ class CartItem extends React.Component {
         const { cartProduct, getProductDetailsById } = this.props;
         const productDetails = getProductDetailsById(cartProduct.productId);
         return (
-            <ProductInCart>
-                <RemoveProduct onClick={this.onRemoveCartItem}>x</RemoveProduct>
-                <ProductImageInCart src={productDetails[0].imageURL} alt={productDetails[0].title}/>
-                <ProductPriceDetails>
-                    <ProductTitle>{productDetails[0].title}</ProductTitle>
-                    <ProductDescription>{productDetails[0].printStyle}</ProductDescription>
-                    <ProductQuantity>Quantity: {cartProduct.quantity}</ProductQuantity>
-                </ProductPriceDetails>
-                <ProductPrice>₹ {productDetails[0].price}</ProductPrice>
+            <div>
+                <hr/>
+                <ProductInCart>
+                    <RemoveProduct onClick={this.onRemoveCartItem}>x</RemoveProduct>
+                    <ProductImageInCart src={productDetails[0].imageURL} alt={productDetails[0].title}/>
+                    <ProductPriceDetails>
+                        <ProductTitle>{productDetails[0].title}</ProductTitle>
+                        <ProductDescription>{productDetails[0].printStyle}</ProductDescription>
+                        <ProductQuantity>Quantity: {cartProduct.quantity}</ProductQuantity>
+                    </ProductPriceDetails>
+                    <ProductPrice>₹ {productDetails[0].price}</ProductPrice>
                 </ProductInCart>
+            </div>
         );
     }
 }

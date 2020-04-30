@@ -1,17 +1,16 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import CartItem from '../CartItem/index.js';
 import CartListContainer from './styledComponent.js';
 
-@inject('cartStore')
 @observer
 class CartList extends React.Component {
     render() {
-        const { cartStore } = this.props;
+        const { cartProductList, getProductDetailsById, onRemoveCartItem } = this.props;
         return (
             <CartListContainer>
-            {cartStore.cartProductList.map((eachCartProduct)=>{return <CartItem cartProduct={eachCartProduct} onRemoveCartItem={cartStore.onRemoveCartItem}
-                getProductDetailsById={cartStore.getProductDetailsById}/>})}
+            {cartProductList.map((eachCartProduct)=>{return <CartItem key ={Math.random()} cartProduct={eachCartProduct} onRemoveCartItem={onRemoveCartItem}
+                getProductDetailsById={getProductDetailsById}/>})}
             </CartListContainer>
         );
     }

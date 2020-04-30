@@ -5,11 +5,13 @@ class CartStore {
 
     @observable cartProductList
     @observable productStore
+    @observable ordersHistoryList
 
     constructor(productStoreInstance) {
 
         this.productStore = productStoreInstance;
         this.cartProductList = [];
+        this.ordersHistoryList = [];
 
     }
 
@@ -47,12 +49,18 @@ class CartStore {
         this.cartProductList = removedCartProductList;
 
     }
+    @action.bound
+    onRemoveOrderedProductFromHistory(cartItemId) {
+        let removedordersHistoryList = this.ordersHistoryList.filter((eachCartProduct) => { return !(eachCartProduct.cartItemId === cartItemId) });
+        this.ordersHistoryList = removedordersHistoryList;
+    }
 
     @action.bound
     clearCart() {
 
+        this.ordersHistoryList.push(...this.cartProductList);
         this.cartProductList = [];
-
+        alert('Thank You For Shopping With Us.\nYour products will be delivered with in 3 days to the address mentioned in your profile.');
     }
 
     @action.bound

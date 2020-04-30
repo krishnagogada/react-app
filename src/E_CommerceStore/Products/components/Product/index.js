@@ -1,6 +1,8 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
-import { ToastContainer, toast, Slide } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { FiCheckCircle } from "react-icons/fi";
+
 import 'react-toastify/dist/ReactToastify.css';
 import {
     ProductContainer,
@@ -23,7 +25,7 @@ class Product extends React.Component {
 
     onClickAddToCart = () => {
 
-        toast.warn("Product added to your cart");
+        toast.warn(<p className='text-center'><FiCheckCircle className='inline text-green-700'/> Product added to your car!</p>);
         const { cartStore, product } = this.props;
         cartStore.onClickAddToCart(product.productId);
 
@@ -44,7 +46,6 @@ class Product extends React.Component {
                 </Price>
                 <Installments>or {product.installmentsCount} x ₹ {(product.price/product.installmentsCount).toFixed(2)}</Installments>
                 <CartButton onClick={this.onClickAddToCart}>Add to cart</CartButton>
-                <ToastContainer hideProgressBar={true} autoClose={3000} closeButton={false} transition={Slide} position={toast.POSITION.BOTTOM_CENTER}/>
             </ProductContainer>
         );
     }

@@ -1,10 +1,12 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
-import { SortPriceAndNumberOfProducts, NumberOfProducts, SortLabel, SortSelector, OptionsForSort } from './styledComponent.js';
+import { observer } from 'mobx-react';
+import { observable } from 'mobx';
+import { SortPriceAndNumberOfProducts, NumberOfProducts, SearchBar, SortLabel, SortSelector, OptionsForSort } from './styledComponent.js';
 
-@inject('productStore')
 @observer
 class Header extends React.Component {
+
+    @observable searchText = ''
 
     onSelectSortBy = (event) => {
 
@@ -12,6 +14,12 @@ class Header extends React.Component {
         onChangeSortBy(event.target.value);
 
     }
+
+    onChangeInput = (event) => {
+        const { onChangeSearchText } = this.props;
+        onChangeSearchText(event.target.value);
+    }
+
     render() {
 
         const { totalNoOfProductsDisplayed } = this.props;
@@ -19,6 +27,7 @@ class Header extends React.Component {
         return (
             <SortPriceAndNumberOfProducts>
                 <NumberOfProducts>{totalNoOfProductsDisplayed} Product(s) found. </NumberOfProducts>
+                <SearchBar defaultValue={this.searchText} onChange = {this.onChangeInput} placeholder='Search your products'/>
                 <SortLabel>Sort price by:  
                     <SortSelector onChange={this.onSelectSortBy} >
                         <OptionsForSort hidden={true}>Select</OptionsForSort>

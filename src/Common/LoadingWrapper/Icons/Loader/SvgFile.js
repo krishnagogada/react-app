@@ -4,7 +4,7 @@ class Loader extends Component {
   static defaultProps = {
     width: 100,
     height: 100,
-    fill: "#00BFFF"
+    fill: "black"
   };
 
   render() {

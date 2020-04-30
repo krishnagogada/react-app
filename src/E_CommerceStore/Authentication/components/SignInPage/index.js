@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
+
 import { getAccessToken } from '../../utils/StorageUtils';
 import { SignInContainer, SiginForm, SignInHeading, UserName, Password, SubmitButton, DisplayErrorMessage } from './styledComponent.js';
 
@@ -25,7 +26,6 @@ class SignIn extends React.Component {
 
         const { history, authStore } = this.props;
         if (this.userName.length !== 0 && this.password.length !== 0 && authStore.getUserSignInAPIError === null) {
-
             authStore.userSignIn();
             setTimeout(() => {
                 if (getAccessToken()) {
@@ -35,9 +35,7 @@ class SignIn extends React.Component {
                 else {
                     this.ErrorMessage = "Network Error";
                 }
-            }, 400);
-
-
+            }, 500);
         }
         else if (authStore.getUserSignInAPIError) {
             this.ErrorMessage = "Network Error";
@@ -55,7 +53,7 @@ class SignIn extends React.Component {
     render() {
 
         if (getAccessToken()) {
-            return <Redirect to = { {pathname: '/ecommerce-store/products/' }} />
+            return <Redirect to = { {pathname: '/ecommerce-store/products/' }} />;
         }
 
         return (
