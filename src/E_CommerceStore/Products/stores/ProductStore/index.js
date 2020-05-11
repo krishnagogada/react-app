@@ -27,7 +27,6 @@ class ProductStore {
 
         const productListPromise = this.ProductListAPIService.getProductsAPI();
 
-
         return bindPromiseWithOnSuccess(productListPromise)
             .to(this.setGetProductListAPIStatus, this.setProductListResponse)
             .catch(this.setGetProductListAPIError);

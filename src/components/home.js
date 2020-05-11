@@ -7,34 +7,34 @@ import { Login, UserName, Password, LoginButton } from './styledComponent.js';
 @observer
 export default class Home extends React.Component {
 
-    @observable isLogged = true
-    @observable userName = '';
-    @observable password = '';
+  @observable isLogged = true
+  @observable userName = '';
+  @observable password = '';
 
-    onChangeUserName = (event) => {
-      this.userName = event.target.value;
-    }
-    onChangepassword = (event) => {
-      this.password = event.target.value;
-    }
-    onLoginClick = () => {
+  onChangeUserName = (event) => {
+    this.userName = event.target.value;
+  }
+  onChangepassword = (event) => {
+    this.password = event.target.value;
+  }
+  // onLoginClick = () => {
 
-      // gotoGridScreenIfLoggedIn = () => {
+  // gotoGridScreenIfLoggedIn = () => {
 
-      //   return (
-      //     <Redirect to = { {pathname: '/login-page' }} />);
-      // }
+  //   return (
+  //     <Redirect to = { {pathname: '/login-page' }} />);
+  // }
 
-      render() {
-        // if (this.isLogged) {
-        //   return <Login>
-        //             <UserName type='text' defaultValue={this.userName} onChange={this.onChangeUserName}/>
-        //             <Password type='password' defaultValue={this.password} onChangepassword={this.onChangepassword}/>
-        //             <LoginButton onClick={this.onLoginClick}>Login</LoginButton>
-        //         </Login>;
-        // }
-        return (
-          <div>
+  render() {
+    // if (this.isLogged) {
+    //   return <Login>
+    //             <UserName type='text' defaultValue={this.userName} onChange={this.onChangeUserName}/>
+    //             <Password type='password' defaultValue={this.password} onChangepassword={this.onChangepassword}/>
+    //             <LoginButton onClick={this.onLoginClick}>Login</LoginButton>
+    //         </Login>;
+    // }
+    return (
+      <div>
             <h1>Projects</h1>
             <div>
               <Link to="/CarsApp">CarsApp</Link>
@@ -63,9 +63,9 @@ export default class Home extends React.Component {
             <div>
               <Link to="/grid-game">Grid Game</Link>
             </div>
-            <div>
-              <Link to="/Hands-On">Hands On</Link>
-            </div>
+            {/*<div>
+              <Link to="/HiddenMessage">Hands On</Link>
+            </div>*/}
             <div>
               <Link to="/loading-errors">TryOuts On LoadingAnd Errors</Link>
             </div>
@@ -73,9 +73,9 @@ export default class Home extends React.Component {
               <Link to="/todo-with-services">Todo App With Service</Link>
             </div>
             <div>
-              <Link to="/ecommerce-store/sign-in/">E CommerceStore</Link>
+              <Link to="/ecommerce-store/products/">E CommerceStore</Link>
             </div>
         </div>);
-      }
+  }
 
-    }
+}

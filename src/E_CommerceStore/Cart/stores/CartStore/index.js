@@ -49,6 +49,7 @@ class CartStore {
         this.cartProductList = removedCartProductList;
 
     }
+
     @action.bound
     onRemoveOrderedProductFromHistory(cartItemId) {
         let removedordersHistoryList = this.ordersHistoryList.filter((eachCartProduct) => { return !(eachCartProduct.cartItemId === cartItemId) });

@@ -35,6 +35,7 @@
     "start": "npm run watch:css & react-scripts start",
     "build": "npm run build:css react-scripts build",
     "test": "react-scripts test",
+    "coverage": "react-app-rewired test --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "js:start": "npm run watch:css & react-app-rewired start",
     "js:build": "npm run build:css react-app-rewired build",
@@ -69,5 +70,26 @@
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-app-rewired": "2.1.5",
     "tailwindcss": "^1.2.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "!src/components/**/*.{ts,tsx,js,jsx}",
+      "!src/Common/**/*.{ts,tsx,js,jsx}",
+      "!src/constants/**/*.{ts,tsx,js,jsx}",
+      "!src/components/**/*.{ts,tsx,js,jsx}",
+      "!src/fixtures/**/*.{ts,tsx,js,jsx}",
+      "!src/Jsons/**/*.{ts,tsx,js,jsx}",
+      "!src/services/**/*.{ts,tsx,js,jsx}",
+      "!src/stores/**/*.{ts,tsx,js,jsx}",
+      "!src/styles/**/*.{ts,tsx,js,jsx}",
+      "!src/utils/**/*.{ts,tsx,js,jsx}",
+      "!src/App.{ts,tsx,js,jsx}",
+      "!src/index.{ts,tsx,js,jsx}",
+      "!src/serviceWorker.{ts,tsx,js,jsx}",
+      "!src/setupTests.{ts,tsx,js,jsx}",
+      "!src/tailwind.{ts,tsx,js,jsx}",
+      "!src/temp.{ts,tsx,js,jsx}"
+    ]
   }
 }

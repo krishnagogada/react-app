@@ -29,7 +29,7 @@ import LoginPage from './components/LoginPage/index.js';
 import themeStore from './stores/ThemeStore/index';
 import Home from './components/home.js';
 import { authenticationRoutes } from './E_CommerceStore/Authentication/routes/index.js';
-import { ProductPageRoutes } from './E_CommerceStore/Products/routes/index.js';
+import { productPageRoutes } from './E_CommerceStore/Products/routes/index.js';
 import OrdersHistoryList from './E_CommerceStore/Menu/components/OrdersHistoryList/index.js';
 
 import './App.css';
@@ -74,6 +74,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(productPageRoutes)
     return (
       <Provider {...stores} {...authStore}>
       <Router>
@@ -102,8 +103,9 @@ class App extends React.Component {
           </Route>
           <Route path="/loading-errors" component={UserPage}/>
           <Route path="/login-page" component={LoginPage}/>
+          
           {authenticationRoutes}
-          { ProductPageRoutes }
+          { productPageRoutes }
           <Route path="/ecommerce-store/your-orders" component={OrdersHistoryList}/>
           <Route path="/todo-with-services" component={ToDoAppWithService}/>
           <Route path="/Countries">
