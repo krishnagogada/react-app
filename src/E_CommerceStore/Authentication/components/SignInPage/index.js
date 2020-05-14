@@ -9,17 +9,7 @@ class SignIn extends React.Component {
     componentDidMount() {
         this.userNameRef.current.focus();
     }
-    applyFocus = (errorMessage) => {
-        switch (errorMessage) {
-            case 'Please enter password':
-                this.passwordRef.current.focus();
-                break;
-            case 'Please enter username':
-                this.userNameRef.current.focus();
-                break;
-        }
 
-    }
     render() {
         const {
             userName,
@@ -30,9 +20,7 @@ class SignIn extends React.Component {
             errorMessage,
             apiStatus
         } = this.props;
-        if (errorMessage !== '' && errorMessage !== 'Network Error') {
-            this.applyFocus(errorMessage);
-        }
+
         return (
             <SignInContainer>
             <SiginForm>
