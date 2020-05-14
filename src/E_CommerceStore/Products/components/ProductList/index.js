@@ -20,7 +20,7 @@ class ProductList extends React.Component {
     renderProductList = observer(() => {
 
         const { productList, sortedAndFilteredProducts } = this.props;
-        if (productList.length === 0) {
+        if (sortedAndFilteredProducts.length === 0) {
             return <NoDataView/>;
         }
         else {

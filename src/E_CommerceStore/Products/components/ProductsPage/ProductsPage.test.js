@@ -61,4 +61,7 @@ describe('Product page tests', () => {
         getByPlaceholderText('Search your products');
         getByText('Sort price by:');
     });
+
+
+
 });

@@ -3,26 +3,47 @@ import { API_INITIAL, API_SUCCESS, API_FAILED, API_FETCHING } from "@ib/api-cons
 
 import { SignInContainer, SiginForm, SignInHeading, UserName, Password, SubmitButton, DisplayErrorMessage } from './styledComponent.js';
 
-function SignIn(props) {
-    const {
-        userName,
-        onChangeUserName,
-        password,
-        onChangePassword,
-        onClickSignIn,
-        errorMessage,
-        apiStatus
-    } = props;
-    return (
-        <SignInContainer>
+class SignIn extends React.Component {
+    userNameRef = React.createRef();
+    passwordRef = React.createRef();
+    componentDidMount() {
+        this.userNameRef.current.focus();
+    }
+    applyFocus = (errorMessage) => {
+        switch (errorMessage) {
+            case 'Please enter password':
+                this.passwordRef.current.focus();
+                break;
+            case 'Please enter username':
+                this.userNameRef.current.focus();
+                break;
+        }
+
+    }
+    render() {
+        const {
+            userName,
+            onChangeUserName,
+            password,
+            onChangePassword,
+            onClickSignIn,
+            errorMessage,
+            apiStatus
+        } = this.props;
+        if (errorMessage !== '' && errorMessage !== 'Network Error') {
+            this.applyFocus(errorMessage);
+        }
+        return (
+            <SignInContainer>
             <SiginForm>
                 <SignInHeading>Sign in</SignInHeading>
-                <UserName type="text" defaultValue={userName} onChange={onChangeUserName} placeholder='Username'/>
-                <Password type="password" defaultValue={password} onChange={onChangePassword} placeholder='Password' />
+                <UserName ref={this.userNameRef} type="text" defaultValue={userName} onChange={onChangeUserName} placeholder='Username'/>
+                <Password ref={this.passwordRef} type="password" defaultValue={password} onChange={onChangePassword} placeholder='Password' />
                 <SubmitButton onClick={onClickSignIn} type="button" data-testid='sign-in-button' api={API_FETCHING}>{apiStatus===API_FETCHING ? '...Loading' : 'Sign in'}</SubmitButton>
                     <DisplayErrorMessage>{errorMessage}</DisplayErrorMessage>
             </SiginForm>
             </SignInContainer>
-    );
+        );
+    }
 }
 export default SignIn;
