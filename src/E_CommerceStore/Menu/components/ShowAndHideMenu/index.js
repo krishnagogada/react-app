@@ -2,7 +2,7 @@ import React from 'react';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { Redirect } from 'react-router-dom';
-import { MenuContainer, MeanuIcon, MenuContainerWhenOpen, CloseButtonForMenu, HomeComponent } from './styledComponent.js';
+import { MenuContainer, MeanuIcon, MenuContainerWhenOpen, CloseButtonForMenu, HomeComponent, YourOrders } from './styledComponent.js';
 import OrdersHistoryList from '../OrdersHistoryList/index.js';
 
 @inject("cartStore")
@@ -29,7 +29,7 @@ class ShowAndHideMenu extends React.Component {
                    <CloseButtonForMenu onClick={this.hideMenu}>x</CloseButtonForMenu> 
                    <HomeComponent>Home</HomeComponent>
                    {this.shouldDisplayYourOrders ?
-                    <div onClick={this.displayHistoryOrders}>Your Orders</div>:
+                    <YourOrders onClick={this.displayHistoryOrders}>Your Orders</YourOrders>:
                        <div>
                         <div onClick={this.displayHistoryOrders}>Your Orders</div>
                         <OrdersHistoryList ordersHistoryList={cartStore.ordersHistoryList} onRemoveOrderedProductFromHistory={cartStore.onRemoveOrderedProductFromHistory}
